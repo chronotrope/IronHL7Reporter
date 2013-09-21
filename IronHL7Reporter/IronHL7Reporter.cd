@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<ClassDiagram Zoom="1" MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="MainForm.MainForm" Collapsed="False">
+    <Position X="0.5" Y="4.1" Width="2.086447" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="MessageFunctions.MessageFunctions" Collapsed="False">
+    <Position X="0.5" Y="5.6" Width="2.481491" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="hl7" Collapsed="False">
+    <Position X="0.5" Y="7.6" Width="1.668253" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="hl7.Container" Collapsed="False">
+    <Position X="0.5" Y="0.5" Width="1.717721" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="hl7.Message" Collapsed="False">
+    <Position X="0.5" Y="2.4" Width="1.660251" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="hl7.Segment" Collapsed="False">
+    <Position X="2.5" Y="2.4" Width="1.005885" />
+    <Compartments />
+  </Class>
+  <Class Name="hl7.Field" Collapsed="False">
+    <Position X="3.9" Y="2.4" Width="1" />
+    <Compartments />
+  </Class>
+  <Class Name="hl7._ParsePlan" Collapsed="False">
+    <Position X="0.5" Y="9.4" Width="1.750055" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="treeview.IForm" Collapsed="False">
+    <Position X="0.5" Y="11.8" Width="1.428864" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+</ClassDiagram>
