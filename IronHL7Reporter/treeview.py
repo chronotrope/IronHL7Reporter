@@ -28,12 +28,12 @@ class IForm(Form):
     	for m in range(0,len(h)):
     		i=0 
     		for value in(h[m]):
-       	 		print "length = " + str(len(value))
+       	 		'''print "length1 = " + str(len(value))
         		##if "\n" not in value:
         		for comp in value:
         			if i > 0:
         				print "position = " +str(h[m][0][0])+ "-"+ str(i) +"." + str(value.index(comp)+1) + " value = " + comp
-        		i+=1
+        		i+=1'''
     	
         self.Text = 'HL7 Message Analyzer'
         
@@ -59,20 +59,22 @@ class IForm(Form):
         	
         	root.Nodes.Add(nodeName)
         	##print str(nodeName.__class__)
+        	msh1Found = 0
         	
-        	
-        	print 'field length = ' + str(len(h[field][3]))
+        	print 'field length = ' + str(len(h[field]))
         	i=0
         	for value in(h[field]):
-        		
+        		print 'value  = ' + str(value)
+        		k = 0
         		for comp in value:
+        			##print value.index(0)
         			childNode = str(h[field][0][0])+ "-"+ str(i) +"." + str(value.index(comp)+1)
         			childNode = TreeNode()
         			##childNode.Tag = str(h[field][0][0])+ "mno -"+ str(i) +"." + str(value.index(comp)+1)
         			print 'childnode = ' + str(childNode)
         			if i > 0 and i < len(h[field])-1:
         				if not comp:
-        					comp2 ='test1'+ str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp)+1) + '""'
+        					comp2 = str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp)+1) + '""'
         					
         					myColor = Color.Yellow 
         				else:
@@ -84,46 +86,62 @@ class IForm(Form):
         				
         				
         				if str(h[field][0][0]) == 'MSH':
-        					print 'i found msh!'
+        					print 'i found msh!' + str(i)
+        					print 'msh comp2 = ' + comp2
+        					print 'comp2 string = ' + str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp)+2) + '""'
         					if i == 1 and comp2 == str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp)+1) + '""':
-        						comp3 = str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp)+1) +'abcd = '+ '^'
-        						childNode.Tag = str(h[field][0][0])+ "pqr -"+ str(i+1) +"." + str(value.index(comp)+1) 
+        						comp3 = str(h[field][0][0])+ "-"+ str(i) +"." + str(value.index(comp)+1) +' = '+ '|'
+        						childNode.Tag = str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp)+1) 
         						myColor = Color.White
+        						j=1
+        						
+        					elif j==1 and i==1:
+        						print 'i = ' + str(i)
+        						comp2 = comp
+        						comp3 = str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp)) +' = ^'+ comp2
+        						childNode.Tag = str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp))  
+        						j+=1        						
         					else:
         						comp2 = comp
-        						comp3 = str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp)+1) +' def = '+ comp2
-        						childNode.Tag = str(h[field][0][0])+ "stu -"+ str(i+1) +"." + str(value.index(comp)+1)     						        						 
-        						
+        						comp3 = str(h[field][0][0])+ "-"+ str(i) +"." + str(value.index(comp)+1) +' = '+ comp2
+        						childNode.Tag = str(h[field][0][0])+ "-"+ str(i) +"." + str(value.index(comp)+1)     	
         				else:
-        					print 'else comp2 = ' +comp2
+        					comp2 = comp
+        					       						       					
+        					childNode.Tag = str(h[field][0][0])+ "-"+ str(i) +"." + str(value.index(comp)+1)
+        					comp3 = str(h[field][0][0])+ "-"+ str(i) +"." + str(value.index(comp)+1) + ' = ' + comp2
+        						
         					
-        					childNode.Tag = str(h[field][0][0])+ "vwx -"+ str(i) +"." + str(value.index(comp)+1)
-        					comp3 = str(h[field][0][0])+ "vwx -"+ str(i) +"." + str(value.index(comp)+1) + 'i = ' +str(i)+' ghi= '+ comp2
         					
-        				print 'comp2 = ' + comp2
+        				print 'comp2 = ' + comp
+        				print 'j = ' + str(j)
         				childNode.Text =  comp3
         				childNode.BackColor = myColor
         				nodeName.Nodes.Add(childNode)
         					
         					
         		i+=1
-        	
-        	
-        		j+=1
+        		comp2 = ''
+        		comp = ''
+        		
 		
 			
         
         ##child3.Nodes.AddRange((gchild2, gchild2))
        	tv.CheckBoxes = False
+       	
         tv.Parent = self
+        tv.SuspendLayout
         tv.Nodes.Add(root)
         tv.Dock = DockStyle.Fill
+        tv.Scrollable
+        tv.ResumeLayout
         tv.AfterSelect += self.AfterSelect
 
         
         
         
-        self.Size = Size(400, 300)
+        self.Size = Size(400, 500)
         self.CenterToScreen()
         
     	
