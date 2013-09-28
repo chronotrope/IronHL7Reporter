@@ -1,0 +1,18 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+# SharpDevelop 4.3
+Project("{FD48973F-F585-4F70-812B-4D0503B36CE9}") = "IronHL7Reporter", "IronHL7Reporter\IronHL7Reporter.pyproj", "{C156A8C9-B794-4ED2-9598-A10538C82513}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C156A8C9-B794-4ED2-9598-A10538C82513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C156A8C9-B794-4ED2-9598-A10538C82513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C156A8C9-B794-4ED2-9598-A10538C82513}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C156A8C9-B794-4ED2-9598-A10538C82513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+EndGlobal
