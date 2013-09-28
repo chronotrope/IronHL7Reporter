@@ -13,17 +13,19 @@ import hl7
 
 
 class IForm(Form):
-
+	
     def __init__(self):
     	
     	self.sb = StatusBar()
         self.sb.Parent = self
         
-   	
-    	
-    	getMessage = mf.MessageFunctions('C:/Users/ruben/Downloads/897301.txt', 'outfile.txt')
+       
+    	mshFound = False
+    	##getMessage = mf.MessageFunctions('C:/Users/ruben/Downloads/897301.txt', 'outfile.txt')
+    	getMessage = mf.MessageFunctions('C:/Users/ruben/Downloads/wiki-hl7.txt', 'outfile.txt')
     	myMessage = getMessage.findMessage()
     	h = hl7.parse(myMessage)
+    	segmentsFound = str(len(h))+ ' segments found'
     	
     	for m in range(0,len(h)):
     		i=0 
@@ -35,6 +37,7 @@ class IForm(Form):
         				print "position = " +str(h[m][0][0])+ "-"+ str(i) +"." + str(value.index(comp)+1) + " value = " + comp
         		i+=1'''
     	
+        
         self.Text = 'HL7 Message Analyzer'
         
         
@@ -46,7 +49,7 @@ class IForm(Form):
         root.Text = 'HL7 Message'
        
         
-        j=0
+        
         
       	##fieldArray = Array[TreeNode]([20])
       	
@@ -61,11 +64,11 @@ class IForm(Form):
         	##print str(nodeName.__class__)
         	msh1Found = 0
         	
-        	print 'field length = ' + str(len(h[field]))
+        	print 'field length for ' + str(h[field][0][0]) + ' = '+ str(len(h[field])-1) + ' field = ' + str(h[field])
         	i=0
         	for value in(h[field]):
         		print 'value  = ' + str(value)
-        		k = 0
+        		
         		for comp in value:
         			##print value.index(0)
         			childNode = str(h[field][0][0])+ "-"+ str(i) +"." + str(value.index(comp)+1)
@@ -93,14 +96,14 @@ class IForm(Form):
         						comp3 = str(h[field][0][0])+ "-"+ str(i) +"." + str(value.index(comp)+1) +' = '+ '|'
         						childNode.Tag = str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp)+1) 
         						myColor = Color.White
-        						j=1
+        						mshFound = True
         						
-        					elif j==1 and i==1:
+        					elif mshFound == True and i==1:
         						print 'i = ' + str(i)
         						comp2 = comp
         						comp3 = str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp)) +' = ^'+ comp2
         						childNode.Tag = str(h[field][0][0])+ "-"+ str(i+1) +"." + str(value.index(comp))  
-        						j+=1        						
+        						      						
         					else:
         						comp2 = comp
         						comp3 = str(h[field][0][0])+ "-"+ str(i) +"." + str(value.index(comp)+1) +' = '+ comp2
@@ -114,40 +117,45 @@ class IForm(Form):
         					
         					
         				print 'comp2 = ' + comp
-        				print 'j = ' + str(j)
+        				print 'msh found = ' + str(mshFound)
         				childNode.Text =  comp3
         				childNode.BackColor = myColor
         				nodeName.Nodes.Add(childNode)
+        				
+        				
         					
         					
         		i+=1
         		comp2 = ''
         		comp = ''
+        			
         		
 		
 			
         
         ##child3.Nodes.AddRange((gchild2, gchild2))
+       	tv.SuspendLayout
        	tv.CheckBoxes = False
        	
         tv.Parent = self
-        tv.SuspendLayout
         tv.Nodes.Add(root)
         tv.Dock = DockStyle.Fill
         tv.Scrollable
         tv.ResumeLayout
+       	
         tv.AfterSelect += self.AfterSelect
 
         
         
         
-        self.Size = Size(400, 500)
+        self.Size = Size(400, 400)
         self.CenterToScreen()
+        
         
     	
     	
-    def AfterSelect(self, sender, event):    
-        self.sb.Text = event.Node.Tag
-    
+    def AfterSelect(self, sender, event): 
+		self.sb.Text = event.Node.Tag
+        
 
 Application.Run(IForm())
