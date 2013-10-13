@@ -8,7 +8,7 @@ from System.Drawing import Color
 from System.Windows.Forms import Application, Form, StatusBar
 from System.Windows.Forms import TreeView, TreeNode, DockStyle
 from System.Drawing import Size
-import MessageFunctions as mf
+import MessageFunctions2 as mf
 import hl7
 
 
@@ -22,15 +22,15 @@ class IForm(Form):
        
     	mshFound = False
     	##getMessage = mf.MessageFunctions('C:/Users/ruben/Downloads/897301.txt', 'outfile.txt')
-    	getMessage = mf.MessageFunctions('C:/Users/ruben/Downloads/wiki-hl7.txt', 'outfile.txt')
+    	getMessage = mf.MessageFunctions2('C:/Users/ruben/Downloads/wiki-hl7.txt', 'outfile.txt')
     	myMessage = getMessage.findMessage()
     	h = hl7.parse(myMessage)
     	segmentsFound = str(len(h))+ ' segments found'
     	
-    	for m in range(0,len(h)):
+    	'''for m in range(0,len(h)):
     		i=0 
     		for value in(h[m]):
-       	 		'''print "length1 = " + str(len(value))
+       	 		print "length1 = " + str(len(value))
         		##if "\n" not in value:
         		for comp in value:
         			if i > 0:
@@ -55,7 +55,7 @@ class IForm(Form):
       	
       	
         for field in range(0, len(h)):
-        
+        	print 'field = ' + str(field)
         	nodeName = (h[field][0][0])
         	nodeName = TreeNode()
         	nodeName.Text = str(h[field][0][0])

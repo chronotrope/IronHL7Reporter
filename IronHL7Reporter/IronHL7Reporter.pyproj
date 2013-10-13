@@ -63,6 +63,7 @@
     <Compile Include="hl7.py" />
     <Compile Include="MainForm.py" />
     <Compile Include="MessageFunctions.py" />
+    <Compile Include="MessageFunctions2.py" />
     <Compile Include="Program.py" />
     <Compile Include="treeview.py" />
   </ItemGroup>
